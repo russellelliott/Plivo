@@ -4,6 +4,7 @@ import './App.css';
 //For the router/navbar stuff
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Login from "./components/Login"; //login page
+import VideoDashboard from "./components/VideoCall/VideoDashboard"; //video dashboard page
 
 import { useState } from "react";
 import { signOut } from "firebase/auth";
@@ -37,7 +38,7 @@ function App() {
         <Routes>
               
               <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
-              
+              <Route path="/videocall" element={<VideoDashboard />} />
         </Routes>
       </Router>
   );

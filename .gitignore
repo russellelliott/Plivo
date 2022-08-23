@@ -24,3 +24,6 @@ yarn-error.log*
 
 #for the firebase config stuff
 /src/firebase-variables.js
+
+#for the Whereby video
+/src/components/VideoCall/video-variables.js
