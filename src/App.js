@@ -5,6 +5,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Login from "./components/Login"; //login page
 import VideoDashboard from "./components/VideoCall/VideoDashboard"; //video dashboard page
+import Location from "./components/UserLocation/Location"
 
 import { useState } from "react";
 import { signOut } from "firebase/auth";
@@ -31,6 +32,7 @@ function App() {
                   <Link to="/"> Home </Link>
                   <Link to="/profile"> Profile</Link>
                   <Link to="/videocall">Video Call</Link>
+                  <Link to="/location">Location</Link>
                   <button onClick={signUserOut}> Log Out</button>
               </>
             )}
@@ -39,6 +41,7 @@ function App() {
               
               <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
               <Route path="/videocall" element={<VideoDashboard />} />
+              <Route path="/location" element={<Location />} />
         </Routes>
       </Router>
   );

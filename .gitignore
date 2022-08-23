@@ -27,3 +27,6 @@ yarn-error.log*
 
 #for the Whereby video
 /src/components/VideoCall/video-variables.js
+
+#for Google Maps API
+/src/components/UserLocation/GoogleMapsAPI.js
