@@ -12,7 +12,7 @@ function App() {
 		<div className="container">
 			<section className="section">
 				<Navbar />
-				<Chat />
+				{user ? <Chat /> : null}
 			</section>
 		</div>
 	);
