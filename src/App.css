@@ -1,3 +1,8 @@
+.wrapper {
+	display: flex;
+	justify-content: center;
+}
+
 .container {
 	text-align: center;
 	max-width: 728px;
@@ -30,4 +35,13 @@
 	color: #ffffff;
 	font-size: 1.875rem;
 	line-height: 2.25rem;
+}
+
+.logout-btn {
+	padding: 0.5rem 1rem;
+	background-color: #e5e7eb;
+}
+
+.logout-btn:hover {
+	background-color: #f3f4f6;
 }
