@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./components/Navbar";
+import Chat from "./components/Chat"
 import { auth } from "./firebase-config";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./App.css";
@@ -10,8 +11,8 @@ function App() {
 	return (
 		<div className="container">
 			<section className="section">
-				{/* Navbar */}
 				<Navbar />
+				<Chat />
 			</section>
 		</div>
 	);
