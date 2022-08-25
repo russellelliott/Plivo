@@ -10,7 +10,7 @@ export default function App() {
   });
 
   return(
-    isLoaded ? <Map /> : null
-    //<div><Geolocation/></div>
+    //isLoaded ? <Map /> : null
+    <div><Geolocation/></div>
   );
 }
