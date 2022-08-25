@@ -1,19 +1,21 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import Chat from "./components/Chat"
+import "./App.css";
 import { auth } from "./firebase-config";
 import { useAuthState } from "react-firebase-hooks/auth";
-import "./App.css";
+import SignIn from "./components/ChatRoom/SignIn";
+import SignOut from "./components/ChatRoom/SignOut";
+import ChatRoom from "./components/ChatRoom/ChatRoom";
 
 function App() {
 	const [user] = useAuthState(auth);
-	console.log(user);
 	return (
-		<div className="container">
-			<section className="section">
-				<Navbar />
-				{user ? <Chat /> : null}
-			</section>
+		<div className="App">
+			<header>
+				<h1>Global Chat</h1>
+				{user ? <SignOut /> : <SignIn />}
+			</header>
+
+			<section>{user ? <ChatRoom /> : <SignIn />}</section>
 		</div>
 	);
 }
