@@ -11,9 +11,11 @@ import Photo from "./components/Photo" //take photo
 import { useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase-config";
+import Email from './components/Email';
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
+  const [currentUser, setUser] = useState(({email: "", name: "", isAdmin: false}))
   
   const signUserOut = () => {
     signOut(auth).then(() => {
@@ -35,16 +37,18 @@ function App() {
                   <Link to="/videocall">Video Call</Link>
                   <Link to="/location">Location</Link>
                   <Link to="/photo">Photo</Link>
+                  <Link to="/email">Email</Link>
                   <button onClick={signUserOut}> Log Out</button>
               </>
             )}
       </nav>
         <Routes>
               
-              <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
+              <Route path="/login" element={<Login setIsAuth={setIsAuth} setUser = {setUser} currentUser = {currentUser}/>}/>
               <Route path="/videocall" element={<VideoDashboard />} />
               <Route path="/location" element={<Location />} />
               <Route path="/photo" element={<Photo />} />
+              <Route path="/email" element={<Email currentUser = {currentUser} />} />
         </Routes>
       </Router>
   );
