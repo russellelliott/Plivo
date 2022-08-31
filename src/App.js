@@ -8,15 +8,26 @@ import VideoDashboard from "./components/VideoCall/VideoDashboard"; //video dash
 import Location from "./components/UserLocation/Location" //user location
 import Photo from "./components/Photo" //take photo
 
-import { useState } from "react";
-import { signOut } from "firebase/auth";
-import { auth } from "./firebase-config";
+import { useEffect, useState } from "react";
+import { signOut, getAuth, onAuthStateChanged } from "firebase/auth";
+import { auth,db } from "./firebase-config";
 import Email from './components/Email';
 
 function App() {
-  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
+  const [isAuth, setIsAuth] = useState(false);
   const [currentUser, setUser] = useState(({email: "", name: "", isAdmin: false}))
-  
+  const userauth = getAuth()
+
+  onAuthStateChanged(auth, (user)=>{
+    if(user){
+      setUser(({email: user.email, name: user.displayName}))
+      setIsAuth(true)
+    }
+    else {
+      setIsAuth(false);
+    }
+  })
+
   const signUserOut = () => {
     signOut(auth).then(() => {
       localStorage.clear();
@@ -28,7 +39,7 @@ function App() {
   return (
       <Router>
         <nav>
-            {!isAuth ? (
+            {!isAuth && isAuth == false ? (
               <Link to="/login"> Login </Link>
             ) : (
               <>
@@ -44,11 +55,11 @@ function App() {
       </nav>
         <Routes>
               
-              <Route path="/login" element={<Login setIsAuth={setIsAuth} setUser = {setUser} currentUser = {currentUser}/>}/>
+              <Route path="/login" element={<Login setIsAuth={setIsAuth}/>}/>
               <Route path="/videocall" element={<VideoDashboard />} />
               <Route path="/location" element={<Location />} />
               <Route path="/photo" element={<Photo />} />
-              <Route path="/email" element={<Email currentUser = {currentUser} />} />
+              <Route path="/email" element={<Email currentUser = {currentUser}/>} />
         </Routes>
       </Router>
   );
