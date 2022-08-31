@@ -53,8 +53,9 @@ function ChatRoom() {
 				<div ref={scroll}></div>
 			</main>
 			{/* Send Message */}
-			<form onSubmit={sendMessage}>
+			<form className="form-msg" onSubmit={sendMessage}>
 				<input
+				className="form-msg-input"
 					type="text"
 					placeholder="Type a message..."
 					value={formValue}
