@@ -14,7 +14,9 @@ import { auth,db } from "./firebase-config";
 import Email from './components/Email';
 
 // chat messaging
+import Home from "./components/Home"
 import ChatHome from './components/ChatRoom/ChatHome';
+import SupportAdmin from './components/SupportEngine/SupportAdmin';
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -58,13 +60,14 @@ function App() {
             )}
       </nav>
         <Routes>
-              
+              <Route path='/' element={<Home />} />
               <Route path="/login" element={<Login setIsAuth={setIsAuth}/>}/>
               <Route path="/global" element={<ChatHome />} />
               <Route path="/videocall" element={<VideoDashboard />} />
               <Route path="/location" element={<Location />} />
               <Route path="/photo" element={<Photo />} />
               <Route path="/email" element={<Email currentUser = {currentUser}/>} />
+              <Route path="/support" element={<SupportAdmin />} />
         </Routes>
       </Router>
   );
