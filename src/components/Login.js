@@ -30,11 +30,9 @@ function Login({ setIsAuth, setUser, currentUser }) {
   
     const signInWithGoogle = () => {
       signInWithPopup(auth, provider).then((result) => {
-        setUser({email: result.user.email, name: result.user.displayName, admin: isAdmin})
         localStorage.setItem("isAuth", true);
         setIsAuth(true);
         var check = false
-        if(isAdmin === true) {
           data.map((data) => {
             if(data.email === result.user.email)
             {
@@ -42,13 +40,12 @@ function Login({ setIsAuth, setUser, currentUser }) {
             }
           })
           if(check === false) {
-             addDoc(dataCollectionRef, { email: result.user.email, name: result.user.displayName, admin: isAdmin})
+            addDoc(dataCollectionRef, { email: result.user.email, name: result.user.displayName, admin: isAdmin})
           }
           else
           {
             console.log("User already registered")
           }
-        }
         navigate("/");
       });
     };
