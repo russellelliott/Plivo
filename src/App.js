@@ -13,11 +13,6 @@ import { signOut, getAuth, onAuthStateChanged } from "firebase/auth";
 import { auth,db } from "./firebase-config";
 import Email from './components/Email';
 
-// chat messaging
-import Home from "./components/Home"
-import ChatHome from './components/ChatRoom/ChatHome';
-import SupportAdmin from './components/SupportEngine/SupportAdmin';
-
 function App() {
   const [isAuth, setIsAuth] = useState(false);
   const [currentUser, setUser] = useState(({email: "", name: "", isAdmin: false}))
@@ -54,20 +49,17 @@ function App() {
                   <Link to="/location">Location</Link>
                   <Link to="/photo">Photo</Link>
                   <Link to="/email">Email</Link>
-                  <Link to="/global">GlobalChat</Link>
                   <button onClick={signUserOut}> Log Out</button>
               </>
             )}
       </nav>
         <Routes>
-              <Route path='/' element={<Home />} />
+              
               <Route path="/login" element={<Login setIsAuth={setIsAuth}/>}/>
-              <Route path="/global" element={<ChatHome />} />
               <Route path="/videocall" element={<VideoDashboard />} />
               <Route path="/location" element={<Location />} />
               <Route path="/photo" element={<Photo />} />
               <Route path="/email" element={<Email currentUser = {currentUser}/>} />
-              <Route path="/support" element={<SupportAdmin />} />
         </Routes>
       </Router>
   );
