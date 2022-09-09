@@ -5,7 +5,7 @@ function SupportAdmin() {
 	return (
 		<ChatEngine
 			projectID={process.env.REACT_APP_CE_PROJECT_ID}
-			userName="Youkwhan"
+			userName="Admin"
 			userSecret="password"
 			height="calc(100vh- 20px)"
 		/>
