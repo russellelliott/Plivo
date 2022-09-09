@@ -16,14 +16,18 @@ function Email({currentUser}) {
   const emailCollectionRef = collection(db,"emails")
 
   const {state} = useLocation()
+  var {topic} = ""
   var {fname} = ""
   var {femail} = ""
+  var {contents} = ""
   var {reply} = false
   
   if(state !== null) {
     fname = state.fname
     femail = state.femail
+    contents = state.look
     reply = state.reply
+    topic = state.topic
   }
 
    
@@ -73,7 +77,7 @@ function Email({currentUser}) {
           console.log(error.text);
       });
       
-      addDoc(emailCollectionRef, {toName: fname, fromName: currentUser.name, contents: message, fromEmail: currentUser.email, datesent:current_date, topic: ("RE: " +subject), toEmail: femail})
+      addDoc(emailCollectionRef, {toName: fname, fromName: currentUser.name, contents: message, fromEmail: currentUser.email, datesent:current_date, topic: ("RE: " + topic), toEmail: femail})
       e.target.reset()
       navigate("/inbox")
   }
@@ -128,11 +132,13 @@ function Email({currentUser}) {
         <>
         <h4 style={{textAlign:'center'}}>Replying To: {fname}</h4>
         <div className='--flex-center --dir-column '>
+        <h5>Message from {fname}:</h5>
+        <textarea className='--text-sm' cols="50" rows="1" name = "message" value = {contents}></textarea>
           <form className = "--form-control --card --flex-center --dir-column" ref = {form} onSubmit = {((sendReply))}>
             <input type = "hidden" value = {currentUser.name} name = 'from_name'></input>
             <input type = "hidden" value = {currentUser.email} name = 'from_email'></input>
             <input type = "hidden" value = {femail} name = 'to_email'></input>
-            <input type = "text" placeholder='Subject...' name = "subject" value = {subject} onChange = {(e)=>{setSubject(e.target.value)}}></input>
+            <input type = "hidden" placeholder='Subject...' name = "subject" value = {"RE: " + topic}></input>
             <textarea className='--text-sm' onChange={(e)=>{setMessage(e.target.value)}} cols="100" rows="15" name = "message" value = {message}></textarea>
             <button className='--btn --btn-success' type = "submit">Send Email</button>
           </form>

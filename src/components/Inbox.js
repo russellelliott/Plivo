@@ -22,8 +22,12 @@ function Inbox ({currentUser}) {
         navigate("/email", {state: {fname:"",femail:"", reply: false}})    
     }
 
-    const handleReply = (name, email) => {
-        navigate("/email", {state: { fname: name, femail: email,reply: true}})
+    const handleReply = (name, email, mes, top) => {
+        navigate("/email", {state: { fname: name, femail: email,reply: true, look:mes, topic: top}})
+    }
+
+    const displayMessage = (mes) => {
+        navigate("/display", {state: { look: mes }})
     }
 
     return (
@@ -45,8 +49,8 @@ function Inbox ({currentUser}) {
                         <td>{info.fromName}</td>
                         <td>{info.topic}</td>
                         <td>{info.datesent}</td>
-                        <td><button>View Email</button></td>
-                        <td><button onClick = {(e) => {handleReply(info.fromName, info.fromEmail)}}>Reply</button></td>
+                        <td><button onClick={(e) => {displayMessage(info.contents)}}>View Email</button></td>
+                        <td><button onClick = {(e) => {handleReply(info.fromName, info.fromEmail, info.contents, info.topic)}}>Reply</button></td>
                         </tr>
                     )
                 })}
