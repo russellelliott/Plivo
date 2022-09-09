@@ -235,6 +235,7 @@
 }
 .--btn-danger {
   color: #fff;
+  margin-bottom: 0.5rem;
   background: orangered;
 }
 
