@@ -30,3 +30,6 @@ yarn-error.log*
 
 #for Google Maps API
 /src/components/UserLocation/GoogleMapsAPI.js
+
+# for Twilio API
+/src/components/TwilioSMS/twilio-variables.js
