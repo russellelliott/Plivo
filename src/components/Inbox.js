@@ -33,7 +33,7 @@ function Inbox ({currentUser}) {
     return (
         <>
         <th scope="col"><button className = "--btn-primary --btn" onClick = {(e) => {handleEmail()}}>Compose Email</button></th>
-        <table class="table">
+        <table className="table">
             <thead>
                 <tr>
                     <th>Name</th>

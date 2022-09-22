@@ -104,7 +104,7 @@ function Email({currentUser}) {
           <h1 style={{textAlign:'center'}}>Select an admin</h1>
           <h4 style={{textAlign:'center'}}>Currently selected admin: {adminName}</h4>
           {data.filter((info) => {
-            if(info.admin == true)
+            if(info.admin === true)
             {
               return info
             }

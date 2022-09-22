@@ -1,10 +1,13 @@
 import React from "react";
 import SupportEngine from "./SupportEngine"
+import Chats from "./Chats";
+
 
 function Home() {
 	return (
 		<div>
-			<h1>Home</h1>
+			{/* <Chats /> */}
+			Home
 			<SupportEngine />
 		</div>
 	);

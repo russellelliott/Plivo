@@ -18,6 +18,7 @@ import Inbox from "./components/Inbox"
 import Home from "./components/Home"
 import ChatHome from './components/ChatRoom/ChatHome';
 import SupportAdmin from './components/SupportEngine/SupportAdmin';
+import Chats from './components/Chats'
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -69,8 +70,9 @@ function App() {
               <Route path="/photo" element={<Photo />} />
               <Route path="/email" element={<Email currentUser = {currentUser}/>} />
               <Route path="/support" element={<SupportAdmin />} />
+              <Route path="/chats" element={<Chats />} />
               <Route path = "/inbox" element={<Inbox currentUser = {currentUser}/>}/>
-              <Route path = "display" element={<Display></Display>}></Route>
+              <Route path = "/display" element={<Display></Display>}></Route>
         </Routes>
       </Router>
   );
