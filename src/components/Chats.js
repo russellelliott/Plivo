@@ -5,12 +5,12 @@ import { auth } from "../firebase-config";
 import { useAuthState } from "react-firebase-hooks/auth";
 import axios from "axios";
 
-function Chat(){
+function Chat2(){
 	return(
 		<div>I dunno what's wrong here</div>
 	);
 }
-function Chat2() {
+function Chat() {
 	const [user] = useAuthState(auth);
 	const [loading, setLoading] = useState(true);
 	const navigate = useNavigate;
