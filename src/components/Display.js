@@ -1,7 +1,12 @@
 import { NavItem } from "react-bootstrap";
 import { useNavigate,useLocation } from "react-router-dom";
 import "./index.css"
-function Display() {
+function Display(){
+    return(
+        <div>I dunno what's wrong here</div>
+    );
+}
+function Display2() {
     const {state} = useLocation()
     var {message} = ""
     let navigate = useNavigate();

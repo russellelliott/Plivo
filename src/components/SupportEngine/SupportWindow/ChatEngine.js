@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { ChatEngineWrapper, Socket, ChatFeed } from "react-chat-engine";
 import { styles } from "../styles";
 
-function ChatEngine(props) {
+function ChatEngine(){
+	return(
+		<div>I dunno what's wrong here</div>
+	);
+}
+function ChatEngine2(props) {
 	const [showChat, setShowChat] = useState(false);
 
 	useEffect(() => {
